@@ -1,31 +1,21 @@
 import pytest
 
+from faker import Faker
 from functions.five_title import change_copy_item
+
+fake = Faker()
+
+long_title = fake.text()
+short_title = fake.text(max_nb_chars=30)
 
 
 @pytest.mark.parametrize(
     "title, max_main_item_title_length, expected",
     [
-        (
-            pytest.lazy_fixture("long_title"),
-            100,
-            pytest.lazy_fixture("long_title"),
-        ),
-        (
-            pytest.lazy_fixture("long_title_with_brackets"),
-            50,
-            pytest.lazy_fixture("long_title_with_brackets"),
-        ),
-        (
-            pytest.lazy_fixture("short_title"),
-            100,
-            pytest.lazy_fixture("copy_of_short_title"),
-        ),
-        (
-            pytest.lazy_fixture("short_title_with_brackets"),
-            100,
-            pytest.lazy_fixture("short_title_with_brackets_copy"),
-        ),
+        (long_title, 100, long_title),
+        (f"{long_title} (9)", 50, f"{long_title} (9)"),
+        (short_title, 100, f"Copy of {short_title}"),
+        (f"Copy of {short_title} (5)", 100, f"Copy of {short_title} (6)"),
     ],
 )
 def test_change_copy_item(title: str, max_main_item_title_length: int, expected: str):
