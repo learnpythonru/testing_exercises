@@ -1,37 +1,32 @@
-from typing import Mapping
-
 import pytest
 
 from functions.three_url_builder import build_url
-
-hostname = "https://market.yandex.ru"
-relative_url_value = "catalog"
-get_params_value = {
-    "product_id": "1",
-    "color": "red",
-}
+from typing import Mapping
 
 
 @pytest.mark.parametrize(
     "expected, host_name, relative_url, get_params",
     [
         (
-            f"{hostname}/{relative_url_value}",
-            hostname,
-            relative_url_value,
+            "https://market.yandex.ru/catalog",
+            "https://market.yandex.ru",
+            "catalog",
             None,
         ),
         (
-            f"{hostname}/{relative_url_value}",
-            hostname,
-            relative_url_value,
+            "https://market.yandex.ru/catalog",
+            "https://market.yandex.ru",
+            "catalog",
             {},
         ),
         (
-            f"{hostname}/{relative_url_value}?product_id=1&color=red",
-            hostname,
-            relative_url_value,
-            get_params_value,
+            "https://market.yandex.ru/catalog?product_id=1&color=red",
+            "https://market.yandex.ru",
+            "catalog",
+            {
+                "product_id": "1",
+                "color": "red",
+            },
         ),
     ],
 )
