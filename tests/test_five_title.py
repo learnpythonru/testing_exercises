@@ -13,8 +13,8 @@ long_title = fake.text()
     [
         (long_title, 100, long_title),
         (f"{long_title} (9)", 50, f"{long_title} (9)"),
-        ("short_title", 100, f"Copy of short_title"),
-        (f"Copy of short_title (5)", 100, f"Copy of short_title (6)"),
+        ("short_title", 100, "Copy of short_title"),
+        ("Copy of short_title (5)", 100, "Copy of short_title (6)"),
     ],
 )
 def test_change_copy_item(title: str, max_main_item_title_length: int, expected: str):
