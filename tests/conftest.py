@@ -1,5 +1,5 @@
 import pytest
-from datetime import datetime
+import datetime
 from functions.four_bank_parser import SmsMessage, Expense, BankCard
 from decimal import Decimal
 
@@ -19,7 +19,7 @@ def sms_message(sms_text):
     return SmsMessage(
         text=sms_text,
         author="Sberbank",
-        sent_at=datetime(2023, 2, 20, 16, 20, 20),
+        sent_at=datetime.datetime(2023, 2, 20, 16, 20, 20),
     )
 
 
@@ -38,5 +38,33 @@ def expense():
         amount=Decimal('1020'),
         card=BankCard(last_digits='3326', owner='Nikita T.'),
         spent_in='7/11',
-        spent_at=datetime(2023, 2, 20, 16, 20),
+        spent_at=datetime.datetime(2023, 2, 20, 16, 20),
     )
+
+
+@pytest.fixture
+def male_verb():
+    return 'Глагол мужского рода'
+
+
+@pytest.fixture
+def female_verb():
+    return 'Глагол женского рода'
+
+
+@pytest.fixture
+def date_today():
+    date = datetime.date.today()
+    return datetime.datetime(
+        date.year,
+        date.month,
+        date.day,
+        16,
+        48
+    )
+
+
+@pytest.fixture
+def date_tomorrow(date_today):
+    date_tomorrow = date_today + datetime.timedelta(days=1)
+    return date_tomorrow
