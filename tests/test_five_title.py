@@ -5,7 +5,7 @@ import pytest
 @pytest.mark.parametrize(
     'title, max_main_item_title_length, expected_result',
     [
-        (pytest.lazy_fixture('max_string'), 100, pytest.lazy_fixture('max_string')),
+        (pytest.lazy_fixture('long_string'), 100, pytest.lazy_fixture('long_string')),
         ('string', 100, 'Copy of string'),
         ('Copy of string (2)', 100, 'Copy of string (3)'),
         ('Copy of string', 100,'Copy of string (2)'),

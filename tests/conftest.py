@@ -5,7 +5,7 @@ from decimal import Decimal
 
 
 @pytest.fixture
-def max_string():
+def long_string():
     return ''.join('s' for n in range(100))
 
 
@@ -24,19 +24,26 @@ def sms_message(sms_text):
 
 
 @pytest.fixture
-def bank_card():
+def list_bank_cards():
     return [
         BankCard(last_digits='3326', owner='Nikita T.'),
         BankCard(last_digits='1815', owner='Olga N.'),
         BankCard(last_digits='1855', owner='Roman G.'),
     ]
 
+@pytest.fixture
+def bank_card():
+    return BankCard(
+        last_digits='3326',
+        owner='Nikita T.',
+    )
+
 
 @pytest.fixture
-def expense():
+def expense(bank_card):
     return Expense(
         amount=Decimal('1020'),
-        card=BankCard(last_digits='3326', owner='Nikita T.'),
+        card=bank_card,
         spent_in='7/11',
         spent_at=datetime.datetime(2023, 2, 20, 16, 20),
     )
@@ -50,21 +57,3 @@ def male_verb():
 @pytest.fixture
 def female_verb():
     return 'Глагол женского рода'
-
-
-@pytest.fixture
-def date_today():
-    date = datetime.date.today()
-    return datetime.datetime(
-        date.year,
-        date.month,
-        date.day,
-        16,
-        48
-    )
-
-
-@pytest.fixture
-def date_tomorrow(date_today):
-    date_tomorrow = date_today + datetime.timedelta(days=1)
-    return date_tomorrow
