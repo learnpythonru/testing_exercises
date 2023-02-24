@@ -24,9 +24,9 @@ def sms_message(sms_text):
 
 
 @pytest.fixture
-def list_bank_cards():
+def bank_cards(bank_card):
     return [
-        BankCard(last_digits='3326', owner='Nikita T.'),
+        bank_card,
         BankCard(last_digits='1815', owner='Olga N.'),
         BankCard(last_digits='1855', owner='Roman G.'),
     ]
@@ -57,3 +57,15 @@ def male_verb():
 @pytest.fixture
 def female_verb():
     return 'Глагол женского рода'
+
+
+@pytest.fixture
+def today():
+    today = datetime.date.today()
+    return today
+
+
+@pytest.fixture
+def yesterday():
+    yesterday = datetime.date.today() + datetime.timedelta(days=1)
+    return yesterday
