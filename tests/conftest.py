@@ -50,22 +50,10 @@ def expense(bank_card):
 
 
 @pytest.fixture
-def male_verb():
-    return 'Глагол мужского рода'
-
-
-@pytest.fixture
-def female_verb():
-    return 'Глагол женского рода'
-
-
-@pytest.fixture
 def today():
-    today = datetime.date.today()
-    return today
+    return datetime.date.today()
 
 
 @pytest.fixture
-def yesterday():
-    yesterday = datetime.date.today() + datetime.timedelta(days=1)
-    return yesterday
+def yesterday(today):
+    return today + datetime.timedelta(days=1)

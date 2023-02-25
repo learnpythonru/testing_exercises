@@ -3,11 +3,11 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    'verb_male, verb_female, gender, expected_result',
+    'gender, expected_result',
     [
-        (pytest.lazy_fixture('male_verb'), pytest.lazy_fixture('female_verb'), 'male', pytest.lazy_fixture('male_verb')),
-        (pytest.lazy_fixture('male_verb'), pytest.lazy_fixture('female_verb'), 'female', pytest.lazy_fixture('female_verb')),       
+        ('male', 'male_verb'),
+        ('female', 'female_verb'),       
     ]
 )
-def test_genderalize(verb_male, verb_female, gender, expected_result):
-    assert genderalize(verb_male, verb_female, gender) == expected_result
+def test_genderalize(gender, expected_result):
+    assert genderalize('male_verb', 'female_verb', gender) == expected_result
