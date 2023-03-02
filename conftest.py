@@ -2,7 +2,7 @@ import datetime
 import pytest
 
 from decimal import Decimal
-from functions.four_bank_parser import BankCard, Expense, SmsMessage
+from functions.level_1.four_bank_parser import BankCard, Expense, SmsMessage
 
 
 @pytest.fixture
