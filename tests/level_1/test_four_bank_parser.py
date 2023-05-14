@@ -34,7 +34,8 @@ def test_parse_ineco_expense():
     card=[c for c in cards if c.last_digits == raw_card[-4:]][0]
     spent_at=datetime.datetime.strptime(f'{raw_date} {raw_time}', '%d.%m.%y %H:%M')
     
-    Expense1 = Expense(amount, card, spend_in, spent_at)
+    Expense_result = Expense(amount, card, spend_in, spent_at)
 
-    assert parse_ineco_expense(sms, cards) == Expense1
+    assert parse_ineco_expense(sms, cards) == Expense_result
+    assert type(parse_ineco_expense(sms, cards)) == Expense
     pass
