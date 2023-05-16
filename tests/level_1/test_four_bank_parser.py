@@ -38,4 +38,4 @@ def test_parse_ineco_expense():
 
     assert parse_ineco_expense(sms, cards) == Expense_result
     assert type(parse_ineco_expense(sms, cards)) == Expense
-    pass
+
