@@ -16,7 +16,6 @@ def test_parse_ineco_expense():
 # Входное значение для функции  
     cards = [bank_card1, bank_card2]
 
-    Expense_result=Expense(amount=decimal.Decimal('112.3'), card=BankCard(last_digits='4234', owner='User2'), spent_in='Shop_name', spent_at=datetime.datetime(2023, 5, 13, 17, 23))
-    assert parse_ineco_expense(sms, cards) == Expense_result
-    assert type(parse_ineco_expense(sms, cards)) == Expense
+    expense_result=Expense(amount = decimal.Decimal('112.3'), card = BankCard(last_digits ='4234', owner ='User2'), spent_in = 'Shop_name', spent_at = datetime.datetime(2023, 5, 13, 17, 23))
+    assert parse_ineco_expense(sms, cards) == expense_result
     
