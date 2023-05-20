@@ -13,19 +13,11 @@ def test_two_date_is_tomorrow():
 def test_two_date_is_chaos():
     assert compose_datetime_from("202yhbmj5", "19:33") == datetime.datetime(datetime.date.today().year,datetime.date.today().month,datetime.date.today().day,19,33)
 
-# ВОПРОС 4:
-# Вот я поковыряла функцию, пока не разобралась, но не хочу терять наброски.
-# Какой способ сохранения недоделок будет приемлем?
-# Вот так комментить вообще не вариант же.
 
+def test_two_wrong_date():
+    with pytest.raises(AttributeError):
+        compose_datetime_from("202yhbmj5", 14645)
 
-#def test_two_valueerror():
-#    with pytest.raises(ValueError,AttributeError,  match="AttributeError()") as value_err_info:
-#        print("with pytest!")
-#        compose_datetime_from("202yhbmj5", 14645)
-#     #   raise ValueError("ValueError!!!")
-#        assert str(value_err_info.value) == 'some info'
-#      #  assert str(value_err_info.type) == 'some info type' 
-#        compose_datetime_from("202yhbmj5", 14645)
-#        compose_datetime_from("202yhbmj5", "1gws43")
-        
+def test_two_no_date_str():
+    with pytest.raises(TypeError):
+        compose_datetime_from("19:33")
