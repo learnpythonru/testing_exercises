@@ -2,8 +2,17 @@ import re
 from functions.level_1.five_title import change_copy_item
 
 
-def test_change_copy_item_():
-    assert change_copy_item("123456789123456789qw") == "123456789123456789qw"
+def test__change_copy_item__max_lenght_of_name():
+    assert change_copy_item("123", 1) == "123"
+
+
+def test__change_copy_item__add_copy_of():
     assert change_copy_item("Hi") == "Copy of Hi"
-    assert change_copy_item("Copy of Hallou") == "Copy of Hallou"
-    assert change_copy_item("Copy of Hallou (3)") == "Copy of Hallou (3)"
+
+
+def test__change_copy_item__add_number_to_title():
+    assert change_copy_item("Copy of Hallou") == "Copy of Hallou (2)"
+
+
+def test__change_copy_item__increase_number_of_copies():
+    assert change_copy_item("Copy of Hallou (3)") == "Copy of Hallou (4)"

@@ -1,5 +1,4 @@
-*env
+env
+.mypy_cache
 .pytest_cache
-functions/__pycache__/
-functions/level_1/__pycache__/
-tests/level_1/__pycache__/
+__pycache__
