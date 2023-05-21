@@ -18,23 +18,26 @@ def tesr__build_url__get_parameters_empty():
     assert build_url('host_name', 'relative_url', {}) == 'host_name/relative_url'
 
 
-def test__three__value_error_only_host_name():
+def test__build_url_only_host_name_typeerror():
     with pytest.raises(TypeError):
         build_url('host_name')
         
 
-def test_three_value_error_only_get_params():
+def test_build_url_only_get_params_typeerror():
     with pytest.raises(TypeError):
         build_url({'k': 'k_str'})
 
-def test_three_value_error_no_parmeters():
+
+def test__build_url_value_error_no_parmeters():
     with pytest.raises(TypeError):
         build_url()
 
-def test__three__value_error_bad_key_in_get_params():
+
+def test__build_url_bad_key_in_get_params_typeerror():
     with pytest.raises(TypeError):
         build_url('host_name', 'relative_url', {[1,1]: None})
 
-def test__three__value_error_bad_key_in_get_params():
+
+def test__build_url_bad_key_in_get_params_attributeerror():
     with pytest.raises(AttributeError):
         build_url('host_name', 'relative_url', [1,1])
