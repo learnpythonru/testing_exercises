@@ -2,12 +2,8 @@ from functions.level_1.one_gender import genderalize
 
 
 def test__genderalize__male():
-    gender = 'male'
-
-    assert genderalize('сказал', 'сказала', gender) == 'сказал'
+    assert genderalize('сказал', 'сказала', 'male') == 'сказал'
 
 
 def test__genderalize__male():
-    gender = 'female'
-
-    assert genderalize('сказал', 'сказала', gender) == 'сказала'
+    assert genderalize('сказал', 'сказала', 'female') == 'сказала'

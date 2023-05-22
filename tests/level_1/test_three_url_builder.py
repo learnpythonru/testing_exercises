@@ -6,7 +6,7 @@ def test_build_url():
     relative_url = 'search/'
     get_params = {'text':'kinopoisk',
         'search_source' : 'yaru_desktop_common',
-        'src' : 'suggest_Pers'
+        'src' : 'suggest_Pers',
     }
     exprcted_result = 'https://yandex.ru/search/?text=kinopoisk&search_source=yaru_desktop_common&src=suggest_Pers'
 
