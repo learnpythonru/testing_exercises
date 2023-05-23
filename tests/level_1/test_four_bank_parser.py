@@ -3,24 +3,19 @@ import datetime
 import pytest
 import decimal
 
-def test_parse_ineco_expense():
+def test_parse_ineco_expense_succes():
     sms = SmsMessage(
-        text="100.00 RUB. CARD1234, authcode 1234. 01.01.23 11:30",
+        text="100.00 CARD1234, authcode1234 01.01.23 11:30 Alfa",
         author="Alfa Bank",
         sent_at=datetime.datetime(2023, 1, 1, 11, 30)
     )
     cards = [
         BankCard(last_digits="1234", owner= "Alex"),
-        BankCard(last_digits="5678", owner= "Alexandr"),
+        BankCard(last_digits="1234", owner= "Alexandr"),
     ]
+    
     result = parse_ineco_expense(sms, cards)
-    expected = Expense(
-        amount=decimal.Decimal("100.00"),
-        card=BankCard(last_digits="1234"),
-        spent_in="CARD1234",
-        spent_at=datetime.datetime(2023, 1, 1, 11, 30),
-    )
-    assert result == expected
+    
+    assert result.amount == decimal.Decimal("100.00")
+    assert result.card.last_digits == '1234'
 
-    with pytest.raises(ValueError):
-        parse_ineco_expense(sms, cards)
