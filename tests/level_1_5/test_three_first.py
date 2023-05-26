@@ -3,25 +3,18 @@ import pytest
 
 
 def test__first__with_items():
-    items = [5, 7, 1, 15]
-    assert first(items) == 5
+    assert first([5, 7, 1, 15]) == 5
 
 
-def test__first__with_empty_items_and_default_is_NOT_SET():
-    items = []
-    default = "NOT_SET"
+def test__first__with_empty_items_and_default_is_not_set():
     with pytest.raises(AttributeError):
-        first(items)
+        first([])
 
 
-def test__first__with_empty_items_and_default_is_None():
-    items = []
-    default = None
-    assert first(items, default) == None
+def test__first__with_empty_items_and_default_is_none():
+    assert first([], None) == None
 
 
 def test__first__with_empty_items_and_default_is_int():
-    items = []
-    default = 0
-    assert first(items, default) == 0
+    assert first([], 0) == 0
 
