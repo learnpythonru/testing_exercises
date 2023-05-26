@@ -2,7 +2,7 @@ from functions.level_1.five_title import change_copy_item
 
 
 def test__change_copy_item__normal_case_success():
-    assert change_copy_item('Hello World!', 20) == title
+    assert change_copy_item('Hello World!', 20) == 'Hello World!'
 
 
 def test__change_copy_item__long_title():

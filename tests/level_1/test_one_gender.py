@@ -7,3 +7,7 @@ def test__genderalize__male():
 
 def test__genderalize__male():
     assert genderalize('сказал', 'сказала', 'female') == 'сказала'
+
+
+def test__genderalize__male():
+    assert genderalize('сказал', 'сказала', 'none') == 'сказала'
