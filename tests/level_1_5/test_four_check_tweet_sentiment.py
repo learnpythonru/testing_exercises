@@ -11,7 +11,7 @@ def test__check_tweet_sentiment__not_bw_and_gw_in_text():
     assert check_tweet_sentiment('g0 b0 g0 b0 g3 b3 ', {'g1','g2'}, {'b1', 'b2'}) == None
 
 
-def test__check_tweet_sentiment_gw_equal_to_bw():     
+def test__check_tweet_sentiment__gw_equal_to_bw():     
     assert check_tweet_sentiment('g1 b2 g0 b0 g3 b3 ', {'g1','g2'}, {'g1', 'g2'}) == None
 
 
