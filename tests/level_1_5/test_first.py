@@ -2,37 +2,27 @@ from functions.level_1_5.three_first import first, NOT_SET
 import pytest
 
 
-def test__first__only_items():
-    assert first([1, 2, 3]) == 1
+@pytest.mark.parametrize(
+  "items, default, expected_result",
+  [
+      ([1, 2, 3], None, 1),
+      ([1, 2, 3], NOT_SET, 1),
+      ([], 'default', 'default'),
+      ('', 'default', 'default'),
+      (None, 'default', 'default'),
+      (None, 1234, 1234),
+      (None, None, None),
+      (None, (5, 56), (5, 56)),
+  ]      
+)
+
+def test__first__is_valid(items, default, expected_result):
+    assert first(items, default) is expected_result
 
 
-def test__first__items_and_no_set():   
-    assert first([1, 2, 3], NOT_SET) == 1
-
-
-def test__first__no_items_empty_list():       
-    assert first([], 'default') == 'default'
-
-
-def test__first__items_empty(): 
-    assert first('', 'default') == 'default'
-
-def test__first__items_is_none(): 
-    assert first(None, 'default') == 'default'
-
-
-def test__first__default_is_int():
-    assert first(None, 1234) == 1234
-
-
-def test__first__items_and_defaults_are_none():
-    assert first(None, None) == None
-
-
-def test__first__defaults_is_tuple():
-    assert first(None, (5, 56)) == (5, 56)
-
-
+# ВОПРОС: как параметризовать такие варианты, 
+# когда один из параметров не передаётся?
+# Через None?
 def test__first__defaults_is_string():
     assert first('default') == 'd'
 

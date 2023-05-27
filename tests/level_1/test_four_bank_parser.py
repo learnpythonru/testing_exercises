@@ -3,6 +3,8 @@ import datetime
 import decimal
 from typing import NamedTuple
 
+# ВОПРОС:
+# В таких случаях, как этот, нужен ли параметрайз?
 
 def test_parse_ineco_expense():
     text = "112.3 $, 40004234 13.05.23 17:23 Shop_name authcode jhtfj"
