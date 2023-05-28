@@ -1,3 +1,2 @@
 env/
-functions
-__\pycache__
+__pycache__/
