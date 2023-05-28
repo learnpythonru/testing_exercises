@@ -25,7 +25,7 @@ def test__build_url__no_params():
     assert result == expected_result
 
 
-def test_build_url_empty_params():
+def test__build_url__empty_params():
     host_name = 'https://yandex.ru'
     relative_url = 'search/'
     get_params = {}
