@@ -2,7 +2,6 @@ from functions.level_1_5.two_square_equation import solve_square_equation
 import pytest
 
 
-
 @pytest.mark.parametrize(
   "square_coefficient, linear_coefficient, const_coefficient, expected_results",
       [
