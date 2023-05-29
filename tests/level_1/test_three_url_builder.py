@@ -3,7 +3,7 @@ import pytest
 
 
 @pytest.mark.parametrize(
-"host_name, relative_url, get_params, expected_result",
+    "host_name, relative_url, get_params, expected_result",
 [
     ('host_name', 'relative_url', None, 'host_name/relative_url'),
     ('str1', 'relative_url', {'k': 'k_str', 'v': 'v_str'}, 'str1/relative_url?k=k_str&v=v_str'),
@@ -11,8 +11,6 @@ import pytest
     ('host_name', 'relative_url', {}, 'host_name/relative_url'),
 ]
 )
-
-
 def test__build_url__is_valid(host_name, relative_url, get_params, expected_result):
     assert build_url(host_name, relative_url, get_params) == expected_result
 

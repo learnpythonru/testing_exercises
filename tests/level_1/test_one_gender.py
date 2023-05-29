@@ -11,7 +11,6 @@ import pytest
       ("verb_male", "verb_female", '254654', "verb_female"),
   ]      
 )
-
 def test__genderalize__is_valid(verb_male, verb_female, gender, expected_result):
     assert genderalize(verb_male, verb_female, gender) is expected_result
 

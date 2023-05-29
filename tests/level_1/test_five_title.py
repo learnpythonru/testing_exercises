@@ -11,8 +11,6 @@ import pytest
         ('Copy of something (17)', 100, 'Copy of something (18)'),
         ('Copy of something(1fvd7)', 100, 'Copy of something(1fvd7) (2)'),
     ]
-)
-        
-
+)      
 def test__change_copy_item__is_valid(title, max_main_item_title_length, expected_result):
     assert change_copy_item(title, max_main_item_title_length) == expected_result
