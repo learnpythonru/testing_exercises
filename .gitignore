@@ -8,4 +8,3 @@ env.bak/
 venv.bak/
 pycache/
 __pycache__/
-.gitignore
