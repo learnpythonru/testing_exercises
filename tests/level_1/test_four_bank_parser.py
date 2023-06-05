@@ -1,9 +1,8 @@
-from functions.level_1.four_bank_parser import BankCard, SmsMessage, Expense, parse_ineco_expense
+from functions.level_1.four_bank_parser import BankCard, SmsMessage, parse_ineco_expense
 import datetime
-import pytest
 import decimal
 
-def test_parse_ineco_expense_succes():
+def test__parse_ineco_expense__succes():
     sms = SmsMessage(
         text="100.00 CARD1234, authcode1234 01.01.23 11:30 Alfa",
         author="Alfa Bank",
