@@ -9,10 +9,10 @@ import pytest
             ("пошел", "пошла", "uncertain", "пошла"),
         ],
         ids=[
-            "mail_verb",
-            "femail_verb",
-            "verb_of_uncertain_gender",
+            "male verb",
+            "female verb",
+            "female verb returned for uncertain gender",
         ]
 )
-def test__genderalize__input_three_types_of_verbs(verb_male, verb_female, gender, expected_result):
+def test__genderalize__successfull(verb_male, verb_female, gender, expected_result):
     assert genderalize(verb_male, verb_female, gender) is expected_result
