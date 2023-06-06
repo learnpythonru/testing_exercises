@@ -1,7 +1,6 @@
 import re
 from functions.level_1.five_title import change_copy_item
 
-
 def test__change_copy_item__max_lenght_of_name():
     assert change_copy_item("123", 1) == "123"
 

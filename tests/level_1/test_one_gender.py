@@ -1,13 +1,18 @@
 from functions.level_1.one_gender import genderalize
+import pytest
 
-
-def test__genderalize__male_verb():
-    assert genderalize("пошел", "пошла", 'male') == "пошел"
-
-
-def test__genderalize__femaile_verb():
-    assert genderalize("пошел", "пошла", 'female') == "пошла"
-
-
-def test__genderalize__verb_of_uncertain_gender():
-    assert genderalize("пошел", "пошла", 'uncertain') == "пошла"
+@pytest.mark.parametrize(
+        "verb_male,verb_female,gender,expected_result",
+        [
+            ("пошел", "пошла", "male", "пошел"),
+            ("пошел", "пошла", "female", "пошла"),
+            ("пошел", "пошла", "uncertain", "пошла"),
+        ],
+        ids=[
+            "male verb",
+            "female verb",
+            "female verb returned for uncertain gender",
+        ]
+)
+def test__genderalize__successfull(verb_male, verb_female, gender, expected_result):
+    assert genderalize(verb_male, verb_female, gender) is expected_result

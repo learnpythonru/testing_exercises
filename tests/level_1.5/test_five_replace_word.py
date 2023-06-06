@@ -1,20 +1,7 @@
 from functions.level_1_5.five_replace_word import replace_word
 
 
-def replace_word(text: str, replace_from: str, replace_to: str) -> str:
-    words = text.split()
-
-    new_words = []
-    for word in words:
-        if word.lower() == replace_from.lower():
-            new_words.append(replace_to)
-        else:
-            new_words.append(word)
-
-    return ' '.join(new_words)
-
-
-def test__replace_word__change_one_word():
+def test__replace_word__change_repeated_word_in_replace_from_in_all_text():
 
     text = "Говорил попугай попугаю: Я тебя попугай попугаю. Отвечает ему \
         попугай : Попугай , попугай , попугай !"
@@ -25,7 +12,7 @@ def test__replace_word__change_one_word():
 
     assert new_text == "Говорил воробей попугаю: Я тебя воробей попугаю. Отвечает ему воробей : воробей , воробей , воробей !"
 
-def test__replace_word__no_changes():
+def test__replace_word__inputed_text_will_not_changed_when_no_words_consisted_with_replace_from():
 
     text = "У елки иголки колки"
     replace_from = "хвойное"
