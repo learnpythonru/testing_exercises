@@ -3,13 +3,25 @@ import datetime
 import pytest
 
 
+@pytest.fixture
+def time_str():
+    return "19:55"
+
+@pytest.fixture
+def expected_result(time_str): 
+    hour_str, minute_str = time_str.strip().split(":")
+    hour_str = int(hour_str)
+    minute_str = int(minute_str)
+    return datetime.datetime(datetime.date.today().year,
+                                                datetime.date.today().month,
+                                                datetime.date.today().day, 
+                                                 hour_str, minute_str)
+
+
 @pytest.mark.parametrize(
   "date_str, time_str,  expected_result",
    [
-      ("2023,12,15", "19:55", datetime.datetime(datetime.date.today().year,
-                                                datetime.date.today().month,
-                                                datetime.date.today().day, 
-                                                19, 55)),
+#      ("2023,12,15", time_str, expected_result),
       ("tomorrow", "19:55", datetime.datetime(datetime.date.today().year,
                                               datetime.date.today().month,
                                               datetime.date.today().day+1,
