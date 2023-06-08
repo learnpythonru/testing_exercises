@@ -46,5 +46,5 @@ from functions.level_1_7.one_avg_daily_expenses import calculate_average_daily_e
         ),
     ]
 )
-def test__calculate_average_daily_expenses(expenses, expected_result):
+def test__calculate_average_daily_expenses(expenses:list[Expense], expected_result:decimal.Decimal)->bool:
     assert calculate_average_daily_expenses(expenses) == expected_result

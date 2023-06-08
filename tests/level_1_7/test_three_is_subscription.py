@@ -33,27 +33,35 @@ def test__is_subscription(expense, history, expected_result):
     assert is_subscription(expense, history) == expected_result
 
 
+def test__is_subscription_if_expense_occurs_multiple_times(expense, history):
+    assert is_subscription(expense, history) == True
 
 
-                
+@pytest.mark.xfail(reason='Incorrect work of function')
+def test__is_subscription_if_expense_occurs_in_same_month(expense, history):
+    expense_updated = Expense(
+        amount=100,
+        currency='RUB',
+        card='1234',
+        spent_in='Megafon',
+        spent_at=datetime(2023, 3, 15, 0, 0),
+        category='ONLINE_SUBSCRIPTIONS'
+    )
+    assert is_subscription(expense_updated, history) == False
 
+def test__is_subscription_if_expense_occurs_less_than_3_times(expense:list[Expense], history:list[list[Expense]])->bool:
+    expense_updated = Expense(
+        amount=100,
+        currency='RUB',
+        card='1234',
+        spent_in='Megafon',
+        spent_at=datetime(2023, 1, 1, 0, 0),
+        category='ONLINE_SUBSCRIPTIONS'
+    )
+    history_updated = [
+        expense,
+        Expense(amount=100, currency='RUB', card='1234', spent_in='Megafon', spent_at=datetime(2023, 2, 1, 0, 0), category='ONLINE_SUBSCRIPTIONS'),
+    ]
 
+    assert is_subscription(expense_updated, history_updated) == False
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def test__is_subscription(expense, history)
