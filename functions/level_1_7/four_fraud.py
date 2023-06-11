@@ -22,6 +22,6 @@ def find_fraud_expenses(history: list[Expense]) -> list[Expense]:
     for spent_in, spent_at, amount in fraud_signs:
         fraud_transactions += [
             e for e in history
-            if e.spent_in == spent_at and e.spent_at == spent_at and e.amount == amount
+            if e.spent_in == spent_in and e.spent_at == spent_at and e.amount == amount
         ]
     return fraud_transactions

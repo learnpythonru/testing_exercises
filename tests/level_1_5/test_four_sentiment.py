@@ -1,4 +1,5 @@
 from functions.level_1_5.four_sentiment import check_tweet_sentiment
+import pytest
 
 
 def test__check_tweet_sentiment__return_positive_sentiment_when_good_words_are_more_then_bad_ones():

@@ -1,9 +1,17 @@
 from functions.level_1.three_url_builder import build_url
+import pytest
 
 
-def test__build_url__with_parametrs():
-    assert build_url("google.com", "search", {"q": "python"}) == "google.com/search?q=python"
-
-
-def test__build_url__without_parametrs():
-    assert build_url("google.com", "search") == "google.com/search"
+@pytest.mark.parametrize(
+    "host_name,relative_url,get_params,expected_result",
+    [
+        ("google.com", "search", {"q": "python"}, "google.com/search?q=python"),
+        ("google.com", "search", "", "google.com/search"),
+    ],
+    ids=[
+     "return url with params",
+     "without params"
+    ]
+)
+def test_build_url__succsessfull(host_name, relative_url, get_params, expected_result):
+    assert build_url(host_name, relative_url, get_params) == expected_result
