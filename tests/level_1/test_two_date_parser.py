@@ -1,21 +1,34 @@
 from functions.level_1.two_date_parser import compose_datetime_from
 import datetime
+import pytest
 
 
-def test__compose_datetime_from__today():
-    today = datetime.date.today()
-    expected_today = datetime.datetime(today.year, today.month, today.day, 17, 15)
-    
-    result = compose_datetime_from('today', "17:15")
-
-    assert result == expected_today
-    
-
-def test__compose_datetime_from__tomorrow():
-    today = datetime.date.today()
-    tomorrow = today + datetime.timedelta(1) 
-    expected_tomorrow = datetime.datetime(tomorrow.year, tomorrow.month, tomorrow.day, 17, 15)
-
-    result = compose_datetime_from('tomorrow', "17:15") 
-
-    assert result == expected_tomorrow
+@pytest.mark.parametrize(
+    'date_str, time_str, expected_result',
+    [
+        (
+            'today',
+            "17:15",
+            datetime.datetime(
+                datetime.date.today().year,
+                datetime.date.today().month,
+                datetime.date.today().day,
+                17,
+                15,
+            )
+        ),
+        (
+            'tomorrow',
+            "17:15",
+            datetime.datetime(
+                (datetime.date.today() + datetime.timedelta(1)).year,
+                (datetime.date.today() + datetime.timedelta(1)).month,
+                (datetime.date.today() + datetime.timedelta(1)).day,
+                17,
+                15,
+            )
+        ),
+    ],
+)
+def test__compose_datetime_from(date_str, time_str, expected_result):
+    assert compose_datetime_from(date_str, time_str) == expected_result
