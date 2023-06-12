@@ -2,6 +2,7 @@ import pytest
 import datetime
 
 
+
 @pytest.fixture
 def time_str_19_55():
     return "19:55"
@@ -43,3 +44,26 @@ def expected_result_19_55_today(hour_str_19_55, minute_str_19_55):
                              datetime.date.today().day, 
                              hour_str_19_55, 
                              minute_str_19_55)
+
+@pytest.fixture()
+def verb_male():
+    yield "verb_male"
+
+@pytest.fixture()
+def verb_female():
+    yield "verb_female"
+
+
+@pytest.fixture
+def gender_male():
+    return "male"
+
+@pytest.fixture
+def gender_female():
+    return "female"
+
+
+@pytest.fixture
+def random_symbols():
+    return "4w5rgt"
+
