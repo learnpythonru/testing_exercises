@@ -23,8 +23,3 @@ def gender_female():
 @pytest.fixture
 def random_symbols():
     return "4w5rgt"
-
-
-@pytest.fixture
-def type_error():
-    return TypeError
