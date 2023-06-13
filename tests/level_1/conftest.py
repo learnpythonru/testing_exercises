@@ -1,5 +1,7 @@
 import pytest
 
+# ВОПРОС: то есть в этом тесте можно было обойтись совсем-совсем без фикстур?
+# Они получились очень мелкими и многочисленными
 
 @pytest.fixture()
 def host_name_1():
@@ -48,12 +50,6 @@ def get_params_no_querypart():
 def get_params_none():
     return  None
 
-# СИТУАЦИЯ: хочу такую фикстуру, но когда использую, закономерно выдаёт TypeError: unhashable type: 'list'
-# А напрямую в тесте использовать это значение норм, срабатывает без ошибок.
-# Понимаю, что такое значение нельзя в return, но хочу фикстуру(((
-@pytest.fixture()
-def get_params_error():
-    return {[1,1]: None}
 
 @pytest.fixture()
 def get_params_attr_error():

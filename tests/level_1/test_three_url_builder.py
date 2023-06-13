@@ -35,12 +35,10 @@ def test__build_url_value_error_no_parmeters():
     with pytest.raises(TypeError):
         build_url()
 
-# хочу закоменченный вариант, но не знаю как его использовать без ошибок(
-#def test__build_url_bad_key_in_get_params_typeerror(host_name_1, relative_url, get_params_error):
+# Вопрос: убрать что ли нафиг этот тест, тк с такими данными результат - не тайпэррор(
 def test__build_url_bad_key_in_get_params_typeerror(host_name_1, relative_url):
     with pytest.raises(TypeError):
-    #    build_url(host_name_1, relative_url, get_params_error)
-        build_url(host_name_1, relative_url, {[1,1]: None})
+        build_url(host_name_1, relative_url, {(1,1): None})
 
 
 def test__build_url_bad_key_in_get_params_attributeerror(host_name_1, relative_url, get_params_attr_error):
