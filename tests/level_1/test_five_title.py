@@ -20,6 +20,15 @@ import pytest
                 100,
                 'Copy of Hello World! (4)',
             ),
+        ],
+)
+def test__change_copy_item__success(title, max_main_item_title_length, expected_result):
+    assert change_copy_item(title, max_main_item_title_length) == expected_result
+
+
+@pytest.mark.parametrize(
+        'title, max_main_item_title_length, exception_type',
+        [
             (
                 123,
                 100,
@@ -27,9 +36,6 @@ import pytest
             ),
         ],
 )
-def test__change_copy_item(title, max_main_item_title_length, expected_result):
-    if expected_result == AttributeError:
-        with pytest.raises(AttributeError):
-            change_copy_item(title, max_main_item_title_length)
-    else:
-        assert change_copy_item(title, max_main_item_title_length) == expected_result
+def test__change_copy_item__exception(title, max_main_item_title_length, exception_type):
+    with pytest.raises(exception_type):
+        change_copy_item(title, max_main_item_title_length)
