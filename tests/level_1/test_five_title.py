@@ -26,16 +26,6 @@ def test__change_copy_item__success(title, max_main_item_title_length, expected_
     assert change_copy_item(title, max_main_item_title_length) == expected_result
 
 
-@pytest.mark.parametrize(
-        'title, max_main_item_title_length, exception_type',
-        [
-            (
-                123,
-                100,
-                AttributeError,
-            ),
-        ],
-)
-def test__change_copy_item__exception(title, max_main_item_title_length, exception_type):
-    with pytest.raises(exception_type):
-        change_copy_item(title, max_main_item_title_length)
+def test__change_copy_item__exception():
+    with pytest.raises(AttributeError):
+        change_copy_item(123, 100)

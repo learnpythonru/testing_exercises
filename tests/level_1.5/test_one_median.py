@@ -14,12 +14,6 @@ def test__get_median_value__success(items, expected_result):
     assert get_median_value(items) == expected_result
 
 
-@pytest.mark.parametrize(
-    'items, exception_type',
-    [
-        ([8, 1, 3, 2], IndexError),
-    ],
-)
-def test__get_median_value__exception(items, exception_type):
-    with pytest.raises(exception_type):
-        get_median_value(items)
+def test__get_median_value__index_error():
+    with pytest.raises(IndexError):
+        get_median_value([8, 1, 3, 2])
