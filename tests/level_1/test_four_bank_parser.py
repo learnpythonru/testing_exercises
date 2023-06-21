@@ -24,6 +24,4 @@ def test__parse_ineco_expense__invalid_format():
     cards = [BankCard('5678', 'KONSTANTIN MISHAKOV')]
 
     with pytest.raises(IndexError):
-        result = parse_ineco_expense(message, cards)
-        
-     
+        parse_ineco_expense(message, cards)
