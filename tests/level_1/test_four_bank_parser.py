@@ -1,27 +1,17 @@
-from functions.level_1.four_bank_parser import BankCard, SmsMessage, Expense, parse_ineco_expense
-from datetime import datetime
-from decimal import Decimal
+from functions.level_1.four_bank_parser import parse_ineco_expense
 import pytest
 
 
-def test__parse_ineco_expense__success():
-    message = SmsMessage('99.99 руб, *1234 12.04.23 16:00 nenaprasno.ru authcode 0000', "Tinkoff", datetime.now())
-    cards = [BankCard('1234', 'KONSTANTIN MISHAKOV'), BankCard('5678', 'KONSTANTIN MISHAKOV')]
-    expense = Expense(
-        amount=Decimal("99.99"),
-        card=cards[0],
-        spent_in="nenaprasno.ru",
-        spent_at=datetime.strptime("12.04.23 16:00", "%d.%m.%y %H:%M"),
-        )
+def test__parse_ineco_expense__success(bank_card_1234, bank_card_5678, sms_message, expense):
+    cards = [bank_card_1234, bank_card_5678]
 
-    result = parse_ineco_expense(message, cards)
+    result = parse_ineco_expense(sms_message, cards)
 
     assert result == expense
 
 
-def test__parse_ineco_expense__invalid_format():
-    message = SmsMessage('99.99 руб, *1234 12.04.23 16:00 nenaprasno.ru authcode 0000', "Tinkoff", datetime.now())
-    cards = [BankCard('5678', 'KONSTANTIN MISHAKOV')]
+def test__parse_ineco_expense__invalid_format(bank_card_5678, sms_message):
+    cards = [bank_card_5678]
 
     with pytest.raises(IndexError):
-        parse_ineco_expense(message, cards)
+        parse_ineco_expense(sms_message, cards)
