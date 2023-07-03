@@ -9,7 +9,7 @@ import pytest
         ("google.com", "search", "", "google.com/search"),
     ],
     ids=[
-     "return url with params",
+     "with params",
      "without params"
     ]
 )

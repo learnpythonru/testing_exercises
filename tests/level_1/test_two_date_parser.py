@@ -11,12 +11,11 @@ import pytest
             ("yesterday", "12:00", datetime.datetime(2023, 5, 16, 12, 0)),
         ],
         ids=[
-            'datetime_from_today',
-            'datetime_from__tomorrow',
-            'datetime_from_yesterday',
+            'from today',
+            'from tomorrow',
+            'from yesterday',
         ]
 )
 @freeze_time("2023-05-16")
 def test_compose_datetime_from__successfull(date_str, time_str, expected_result):
     assert compose_datetime_from(date_str, time_str) == expected_result
-

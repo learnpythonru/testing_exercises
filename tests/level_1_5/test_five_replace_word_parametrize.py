@@ -4,15 +4,20 @@ import pytest
 @pytest.mark.parametrize(
         "text,replace_from,replace_to,expected_result",
         [
-            ("Говорил попугай попугаю: Я тебя попугай попугаю. Отвечает ему \
-             попугай : Попугай , попугай , попугай !", "Попугай", "воробей",
-             "Говорил воробей попугаю: Я тебя воробей попугаю. Отвечает ему воробей : воробей , воробей , воробей !"),
-            ("У елки иголки колки", "хвойное", "дерево", "У елки иголки колки")
-        ],
-        ids=[
-            "change repeated word in replace from in all text",
-            "inputed text will not changed when no words consisted with replace from"
+            ("Сначала бежим , потом бежим", "бежим", "лежим", "Сначала лежим , потом лежим"),
+            ("сидим едим", "сидим", "спим", "спим едим")
         ]
 )
-def test__replace_word__successfull(text, replace_from, replace_to, expected_result):
+def test__replace_word__successfull_change_repeated_word_in_replace_from_in_all_text(text, replace_from, replace_to, expected_result):
+    assert replace_word(text, replace_from, replace_to) == expected_result
+
+
+@pytest.mark.parametrize(
+        "text,replace_from,replace_to,expected_result",
+        [
+            ("Шли шли , не дошли", "ехали", "приехали", "Шли шли , не дошли"),
+            ("Любовь, смерть и роботы", "кино", "мульт", "Любовь, смерть и роботы")
+        ]
+)
+def test__replace_word__fail(text, replace_from, replace_to, expected_result):
     assert replace_word(text, replace_from, replace_to) == expected_result

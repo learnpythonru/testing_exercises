@@ -2,22 +2,17 @@ from functions.level_1_7.two_expense_categorizer import guess_expense_category, 
 import pytest
 from functions.level_1_7.models import ExpenseCategory
 
-def test__is_string_contains_trigger__start_with_delimeter_success(random_trigger, random_delimeter):
-    original_string = random_delimeter + random_trigger
 
-    assert is_string_contains_trigger(original_string, random_trigger) is True
-
-
-def test__is_string_contains_trigger__end_with_delimeter_success(random_trigger, random_delimeter):
-    original_string = random_trigger + random_delimeter
-
-    assert is_string_contains_trigger(original_string, random_trigger) is True
-
-
-def test__is_string_contains_trigger__trigger_between_delimeters_success(random_trigger, random_delimeter):
-    original_string = random_delimeter + random_trigger + random_delimeter
-
-    assert is_string_contains_trigger(original_string, random_trigger) is True
+@pytest.mark.parametrize(
+       "original_string,trigger,expected_result",
+       [
+           (" asador", "asador", True),
+           ("farm,", "farm", True),
+           ("\\tomsarkgh-", "tomsarkgh", True),
+        ]
+)
+def test__is_string_contain_trigger__success(original_string, trigger, expected_result):
+    assert is_string_contains_trigger(original_string, trigger) is expected_result
 
 
 @pytest.mark.parametrize(
@@ -36,18 +31,15 @@ def test__is_string_contains_trigger__fail(original_string, trigger, expected_re
 
 
 def test__guess_expense_category__success(create_expenses):
-    expense = create_expenses('200', 'RUB', '0808', 'vasin vasya', 'sas',
-                              '15.05.2023', "")
+    expense = create_expenses(spent_in='sas')
     assert guess_expense_category(expense) == ExpenseCategory.SUPERMARKET
 
 
-def test__guess_expense_category__success(create_expenses, random_delimeter):
-    expense_1 = create_expenses('200', 'RUB', '0808', 'vasin vasya', random_delimeter + 'julis',
-                                '15.05.2023', "")
+def test__guess_expense_category__success_with_random_delimeter(create_expenses, random_delimeter):
+    expense_1 = create_expenses(spent_in=random_delimeter+'julis')
     assert guess_expense_category(expense_1) == ExpenseCategory.BAR_RESTAURANT
 
 
 def test__guess_expense_category__fail_no_trigger_in_Expense_category(create_expenses):
-    expense_1 = create_expenses('200', 'RUB', '0808', 'vasin vasya', 'home',
-                                '15.05.2023', "")
+    expense_1 = create_expenses(spent_in='home')
     assert guess_expense_category(expense_1) is None
