@@ -31,3 +31,20 @@ def parse_ineco_expense(sms: SmsMessage, cards: list[BankCard]) -> Expense:
         spent_in=spend_in,
         spent_at=datetime.datetime.strptime(f'{raw_date} {raw_time}', '%d.%m.%y %H:%M'),
     )
+
+from collections import namedtuple
+
+bank_card_tuple = namedtuple('BankCard', 'last_digits owner')
+bc1 = bank_card_tuple(last_digits=3344, owner='Dyadya Vanya')
+
+card = BankCard(*bc1)
+print(card)
+
+# sms = SmsMessage(NamedTuple):
+#     text: str
+#     author: str
+#     sent_at: datetime.datetime
+
+# parse_ineco_expense(sms, cards)
+
+
