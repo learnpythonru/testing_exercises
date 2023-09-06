@@ -7,9 +7,10 @@ import pytest
     [
         ('russianfood', 'recipes', 'russianfood/recipes'),
         (
-                ['russianfood', 'recipes'],
-                {'name': 'borsch', 'vegan': '0'},
-                "['russianfood', 'recipes']/{'name': 'borsch', 'vegan': '0'}"),
+            ['russianfood', 'recipes'],
+            {'name': 'borsch', 'vegan': '0'},
+            "['russianfood', 'recipes']/{'name': 'borsch', 'vegan': '0'}",
+        ),
         (100, 5, "100/5"),
      ]
 )
@@ -25,6 +26,7 @@ def test_build_url_without_get_params(host_name, relative_url, expected):
     ])
 def test_build_url_with_false_get_params(host_name, relative_url, get_params):
     assert build_url(host_name, relative_url, get_params) == 'russianfood/recipes'
+
 
 @pytest.mark.parametrize(
     'host_name,relative_url,get_params',

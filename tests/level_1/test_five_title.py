@@ -22,7 +22,7 @@ def test_change_copy_item(title, expected):
     [
         ("Hamlet", 5, 'Hamlet'),
         ("Hamlet (105)", 5, 'Hamlet (105)'),
-        ("Hamlet", 15, 'Copy of Hamlet')
+        ("Hamlet", 15, 'Copy of Hamlet'),
     ]
 )
 def test_change_copy_item_with_max_main_item_title_length(title, main_item_title_length, expected):
