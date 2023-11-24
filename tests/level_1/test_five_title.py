@@ -2,4 +2,10 @@ from functions.level_1.five_title import change_copy_item
 
 
 def test_change_copy_item():
-    pass
+    assert change_copy_item("ЦБ может повысить", 5) == "ЦБ может повысить"
+    assert change_copy_item("ЦБ может повысить ключевую ставку", 5000) == "Copy of ЦБ может повысить ключевую ставку"
+    assert change_copy_item("Copy of ЦБ может повысить ключевую ставку", 5000) == "Copy of ЦБ может повысить ключевую ставку (2)"
+    assert change_copy_item("Copy of ЦБ может повысить ключевую ставку (2)", 5000) == "Copy of ЦБ может повысить ключевую ставку (3)"
+    assert change_copy_item("Copy of ЦБ может повысить ключевую ставку калябаля(2)", 5000) == "Copy of ЦБ может повысить ключевую ставку (3)"
+    assert change_copy_item("Copy of ЦБ может повысить(2) ключевую ставку (2)калябаля", 5000) == "Copy of ЦБ может повысить(2) ключевую ставку (3)" #WTF ?
+    assert change_copy_item("Copy of Copy of ЦБ может повысить ключевую ставку", 5000) == "Copy of Copy of ЦБ может повысить ключевую ставку (2)"
