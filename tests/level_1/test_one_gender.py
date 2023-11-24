@@ -5,15 +5,19 @@ from functions.level_1.one_gender import genderalize
 
 @pytest.fixture
 def base_gender_data():
-    return 'He goes', 'She goes'
+    return {'male': 'He goes','female': 'She goes', 'sex': 'male'}
 
 
 def test_genderalize_male(base_gender_data):
-    assert genderalize(base_gender_data[0], base_gender_data[1], 'male') == base_gender_data[0]
+    assert genderalize(base_gender_data['male'],
+                       base_gender_data['female'],
+                       base_gender_data['sex']) == base_gender_data['male']
 
 
 def test_genderalize_female(base_gender_data):
-    assert genderalize(base_gender_data[0], base_gender_data[1], 'female') == base_gender_data[1]
+    assert genderalize(base_gender_data['male'],
+                       base_gender_data['female'],
+                       'female') == base_gender_data['female']
 
 
 def test_return_type():
