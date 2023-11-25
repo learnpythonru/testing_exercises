@@ -16,3 +16,5 @@ def compose_datetime_from(date_str: str, time_str: str) -> datetime.datetime:
     )
 
 
+if __name__ == '__main__':
+    print(compose_datetime_from(date_str='tomorrow', time_str='00:00:00'))
