@@ -13,6 +13,7 @@ def test__is_github_pull_request_url__succes():
     ('github.com/user/some_repository/pull/1', False),
     ('https://gitlub.com/user/some_repository/pull/1', False),
     ('https://github.com/user/some_repository/push/1', False),
+    ('https://github.com/user/some_repository/push/1/2', False),
 ])
 def test__is_github_pull_request_url__wrong_url(url, expected_result):
     assert is_github_pull_request_url(url) == expected_result
