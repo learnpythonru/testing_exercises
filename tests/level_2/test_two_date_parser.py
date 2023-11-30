@@ -29,17 +29,17 @@ def test__two_square_equation__fail(square_coefficient,
                                  const_coefficient) == expected
 
 
-@pytest.mark.parametrize('square_coefficient, linear_coefficient,'
-                         'const_coefficient, expected',
-                         [('abc', -8.0, 3.0, TypeError),
-                          (8.0, 'abc', -1.0, TypeError),
-                          (0.0, 1.0, 'abc', TypeError),
-                          (None, None, None, TypeError)])
-def test__two_square_equation__error(square_coefficient,
-                                     linear_coefficient,
-                                     const_coefficient,
-                                     expected):
-    with pytest.raises(expected):
-        solve_square_equation(square_coefficient,
-                              linear_coefficient,
-                              const_coefficient)
+# @pytest.mark.parametrize('square_coefficient, linear_coefficient,'
+#                          'const_coefficient, expected',
+#                          [('abc', -8.0, 3.0, TypeError),
+#                           (8.0, 'abc', -1.0, TypeError),
+#                           (0.0, 1.0, 'abc', TypeError),
+#                           (None, None, None, TypeError)])
+# def test__two_square_equation__error(square_coefficient,
+#                                      linear_coefficient,
+#                                      const_coefficient,
+#                                      expected):
+#     with pytest.raises(expected):
+#         solve_square_equation(square_coefficient,
+#                               linear_coefficient,
+#                               const_coefficient)

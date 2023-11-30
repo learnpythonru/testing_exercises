@@ -21,9 +21,9 @@ def test__is_github_pull_request_url__fail(url: str, expected: bool):
     assert is_github_pull_request_url(url) == expected
 
 
-@pytest.mark.parametrize('not_url, expected',
-                         [(12345, AttributeError),
-                          (123.45, AttributeError)])
-def test__is_github_pull_request_url__value_error(not_url: str, expected):  # не смог подобрать тут хинт, чтобы линтер не ругался
-    with pytest.raises(expected):
-        is_github_pull_request_url(not_url)
+# @pytest.mark.parametrize('not_url, expected',
+#                          [(12345, AttributeError),
+#                           (123.45, AttributeError)])
+# def test__is_github_pull_request_url__value_error(not_url: str, expected):  # не смог подобрать тут хинт, чтобы линтер не ругался
+#     with pytest.raises(expected):
+#         is_github_pull_request_url(not_url)

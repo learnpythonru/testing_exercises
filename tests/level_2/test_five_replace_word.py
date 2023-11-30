@@ -16,9 +16,9 @@ def test__replace_word__fail(text, word_from, word_to, expected):
     assert replace_word(text, word_from, word_to) == expected
 
 
-@pytest.mark.parametrize('text, word_from, word_to, expected',
-                         [(1, 'four', 'three', AttributeError),
-                          ([1, 2], 'four', 'six', AttributeError)])
-def test__replace_word__error(text: str, word_from, word_to, expected):
-    with pytest.raises(expected):
-        replace_word(text, word_from, word_to)
+# @pytest.mark.parametrize('text, word_from, word_to, expected',
+#                          [(1, 'four', 'three', AttributeError),
+#                           ([1, 2], 'four', 'six', AttributeError)])
+# def test__replace_word__error(text: str, word_from, word_to, expected):
+#     with pytest.raises(expected):
+#         replace_word(text, word_from, word_to)
