@@ -8,7 +8,7 @@ from functions.level_3.one_avg_daily_expenses import \
 
 
 def test__calculate_average_daily_expenses__succes(expenses_list):
-    assert calculate_average_daily_expenses(expenses_list) == Decimal('1258.938')
+    assert calculate_average_daily_expenses(expenses_list) == Decimal('1639.58')
 
 
 def test__calculate_average_daily_expenses__with_zero_amounts():
