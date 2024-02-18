@@ -1,5 +1,21 @@
+import datetime
 from functions.level_1.four_bank_parser import BankCard, SmsMessage, Expense, parse_ineco_expense
 
 
 def test_parse_ineco_expense():
-    pass
+
+    cards = [
+        BankCard(last_digits="1234", owner="Jane Smith")
+    ]
+
+    sms_message = SmsMessage(
+        text="1234567 89, 1234 01.04.23 15:30 Moscow some_details",
+        author="John Doe",
+        sent_at=datetime.datetime(2023, 4, 1)
+    )
+
+    result = parse_ineco_expense(sms=sms_message, cards=cards)
+    assert result.amount == 1234567
+    assert result.card == cards[0]
+    assert result.spent_in == "Moscow some_details"
+    assert result.spent_at == "2023-04-01 15:30:00"
