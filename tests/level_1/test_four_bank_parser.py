@@ -40,18 +40,3 @@ def test_parse_ineco_expense__get_spent_in(sms, cards):
 def test_parse_ineco_expense__get_spent_at(sms, cards):
     expense = parse_ineco_expense(sms, cards)
     assert expense.spent_at.strftime('%d.%m.%y %H:%M') == '19.02.24 22:23'
-
-
-# def test_parse_ineco_expense():
-#     sms = SmsMessage('sum: 11 USD, 1234123412341234 19.02.24 22:23 spent_in authcode ',
-#                      'author',
-#                      datetime.datetime.now())
-#     cards = [BankCard('1234', 'owner_1'),
-#              BankCard('0456', 'owner_2')]
-#
-#     result = parse_ineco_expense(sms, cards)
-#
-#     assert parse_ineco_expense(sms, cards) == Expense(amount=decimal.Decimal('11'),
-#                                                       card=BankCard(last_digits='1234', owner='owner_1'),
-#                                                       spent_in='spent_in',
-#                                                       spent_at=datetime.datetime(2024, 2, 19, 22, 23))
